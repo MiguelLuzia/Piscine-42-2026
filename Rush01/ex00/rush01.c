@@ -1,36 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   rush01.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitavare <mitavare@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/09 11:18:24 by mitavare          #+#    #+#             */
-/*   Updated: 2026/09/09 11:18:58 by mitavare         ###   ########.fr       */
+/*   Created: 2026/09/12 19:14:21 by mitavare          #+#    #+#             */
+/*   Updated: 2026/09/12 19:20:08 by mitavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+#include <rush01.h>
+
+char	***rush01(char *c)
 {
-	int	i;
-
-	i = 0;
-	while (*str)
-	{
-		i++;
-		str++;
-	}
-	return (i);
+	
 }
-
-/*
-#include <stdio.h>
-
-int	main(void)
-{
-	char	*str;
-
-	str = "Hello";
-	printf("%d", ft_strlen(str));
-}
-*/
