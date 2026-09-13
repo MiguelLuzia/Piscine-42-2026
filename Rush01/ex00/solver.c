@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_str.c                                     :+:      :+:    :+:   */
+/*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitavare <mitavare@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/12 16:25:56 by mitavare          #+#    #+#             */
-/*   Updated: 2026/09/12 19:56:20 by mitavare         ###   ########.fr       */
+/*   Created: 2026/09/13 10:14:50 by mitavare          #+#    #+#             */
+/*   Updated: 2026/09/13 15:10:48 by mitavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_check_str(char *str)
-{
-	int	i;
-	int	j;
+#include "rush01.h"
 
-	i = 0;
-	j = 0;
-	while (str[i])
+int	solve(int grid[4][4], int clues[16], int pos)
+{
+	int	row;
+	int	col;
+	int	value;
+
+	if (pos == 16)
+		return (check_complete_grid(grid, clues));
+	row = pos / 4;
+	col = pos % 4;
+	value = 1;
+	while (value <= 4)
 	{
-		while (str[i] == ' ')
-			i++;
-		if (!str[i])
-			break ;
-		if (str[i] < '1' || str[i] > '4')
-			return (0);
-		j++;
-		i++;
-		if (str[i] && str[i] != ' ')
-			return (0);
+		if (can_place(grid, row, col, value))
+		{
+			grid[row][col] = value;
+			if (solve(grid, clues, pos + 1))
+				return (1);
+			grid[row][col] = 0;
+		}
+		value++;
 	}
-	if (j == 16)
-		return (1);
 	return (0);
 }

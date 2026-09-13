@@ -6,11 +6,11 @@
 /*   By: mitavare <mitavare@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/12 16:18:35 by mitavare          #+#    #+#             */
-/*   Updated: 2026/09/12 16:18:48 by mitavare         ###   ########.fr       */
+/*   Updated: 2026/09/13 11:04:36 by mitavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <rush01.h>
+#include "rush01.h"
 
 void	ft_putchar(char c)
 {
