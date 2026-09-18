@@ -1,86 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strs_to_tab.c                                   :+:      :+:    :+:   */
+/*   ft_show_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitavare <mitavare@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/16 16:51:58 by mitavare          #+#    #+#             */
-/*   Updated: 2026/09/17 13:47:51 by mitavare         ###   ########.fr       */
+/*   Created: 2026/09/17 08:49:47 by mitavare          #+#    #+#             */
+/*   Updated: 2026/09/17 13:48:07 by mitavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_stock_str.h"
-#include <stdlib.h>
-
-int	ft_len(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strdup(char *src)
-{
-	char	*copy;
-	int		i;
-
-	copy = (char *)malloc(ft_len(src) + 1);
-	if (copy == NULL)
-		return (NULL);
-	i = 0;
-	while (src[i])
-	{
-		copy[i] = src[i];
-		i++;
-	}
-	copy[i] = '\0';
-	return (copy);
-}
-
-int	strdup_fail(t_stock_str *stocks, int i)
-{
-	if (stocks[i].copy == NULL)
-	{
-		while (i > 0)
-		{
-			i--;
-			free(stocks[i].copy);
-		}
-		free(stocks);
-		return (0);
-	}
-	return (1);
-}
-
-struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
-{
-	int			i;
-	t_stock_str	*stocks;
-
-	i = 0;
-	stocks = malloc((ac + 1) * sizeof(t_stock_str));
-	if (stocks == NULL)
-		return (NULL);
-	while (i < ac)
-	{
-		stocks[i].size = ft_len(av[i]);
-		stocks[i].str = av[i];
-		stocks[i].copy = ft_strdup(av[i]);
-		if (strdup_fail(stocks, i) == 0)
-			return (NULL);
-		i++;
-	}
-	stocks[i].size = 0;
-	stocks[i].str = 0;
-	stocks[i].copy = 0;
-	return (stocks);
-}
-
-/*
 #include <unistd.h>
 
 int	fill_number(int size, char *str, int i)
@@ -131,6 +61,7 @@ void	ft_show_tab(struct s_stock_str *par)
 	}
 }
 
+/*
 #include <stdlib.h>
 int	main(void)
 {
@@ -146,18 +77,4 @@ int	main(void)
 	}
 	free(matrix);
 }
-*/
-
-/*
-#ifndef FT_STOCK_STR_H
-#define FT_STOCK_STR_H
-
-typedef struct s_stock_str
-{
-int size;
-char *str;
-char *copy;
-} t_stock_str;
-
-#endif
 */
