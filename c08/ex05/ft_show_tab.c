@@ -13,6 +13,16 @@
 #include "ft_stock_str.h"
 #include <unistd.h>
 
+int	ft_len(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
 int	fill_number(int size, char *str, int i)
 {
 	if (size >= 10)
