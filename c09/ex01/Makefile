@@ -1,4 +1,5 @@
 FLAGS = -Wall -Wextra -Werror
+INCLUDES = -I includes
 FILES = srcs/ft_putchar.c srcs/ft_swap.c srcs/ft_putstr.c srcs/ft_strlen.c srcs/ft_strcmp.c
 OBJECTS = $(FILES:.c=.o)
 HEADER = includes/ft.h
@@ -10,7 +11,7 @@ libft.a: $(OBJECTS)
 	ranlib libft.a
 
 srcs/%.o: srcs/%.c $(HEADER)
-	cc $(FLAGS) -c $< -o $@
+	cc $(FLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 	rm -f $(OBJECTS)
