@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_any.c                                           :+:      :+:    :+:   */
+/*   ft_count_if.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitavare <mitavare@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/21 12:19:31 by mitavare          #+#    #+#             */
-/*   Updated: 2026/09/22 08:54:25 by mitavare         ###   ########.fr       */
+/*   Created: 2026/09/22 08:51:35 by mitavare          #+#    #+#             */
+/*   Updated: 2026/09/22 09:02:13 by mitavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-int	ft_any(char **tab, int(*f)(char*))
+int	ft_count_if(char **tab, int length, int(*f)(char*))
 {
 	int	i;
+	int	count;
 
 	i = 0;
-	while (tab[i] != NULL)
+	count = 0;
+	while (i < length)
 	{
 		if (f(tab[i]) != 0)
-			return (1);
+			count++;
 		i++;
 	}
-	return (0);
+	return (count);
 }
 
 /*
@@ -44,8 +44,8 @@ int	is_a(char* str)
 #include <stdio.h>
 int	main(void)
 {
-	char *tab[] = {"Hello", "sll", NULL};
-	int	result = ft_any(tab, is_a);
+	char *tab[] = {"Hello", "all", "sal"};
+	int	result = ft_count_if(tab, 3, is_a);
 	printf("%d", result);
 }
 */

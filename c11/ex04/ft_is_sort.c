@@ -1,51 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_any.c                                           :+:      :+:    :+:   */
+/*   ft_is_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitavare <mitavare@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/21 12:19:31 by mitavare          #+#    #+#             */
-/*   Updated: 2026/09/22 08:54:25 by mitavare         ###   ########.fr       */
+/*   Created: 2026/09/22 09:03:52 by mitavare          #+#    #+#             */
+/*   Updated: 2026/09/22 09:25:22 by mitavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-int	ft_any(char **tab, int(*f)(char*))
+int	ft_is_sort(int *tab, int length, int(*f)(int, int))
 {
 	int	i;
+	int	direction;
+	int	result;
 
 	i = 0;
-	while (tab[i] != NULL)
+	direction = 0;
+	while (i < length - 1)
 	{
-		if (f(tab[i]) != 0)
-			return (1);
+		result = f(tab[i], tab[i + 1]);
+		if (result > 0)
+		{
+			if (direction == 1)
+				return (0);
+			direction = -1;
+		}
+		else if (result < 0)
+		{
+			if (direction == -1)
+				return (0);
+			direction = 1;
+		}
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
 /*
-int	is_a(char* str)
+int	compare(int a, int b)
 {
-	int	i;
-
-	i = 0;
-	while(str[i])
-	{
-		if (str[i] == 'a')
-			return (1);
-		i++;
-	}
-	return (0);
+	return (a - b);
 }
 
 #include <stdio.h>
 int	main(void)
 {
-	char *tab[] = {"Hello", "sll", NULL};
-	int	result = ft_any(tab, is_a);
-	printf("%d", result);
+	int	tab[] = {1, 2, 3, 4};
+	printf("%d", ft_is_sort(tab, 4, compare));
 }
 */
