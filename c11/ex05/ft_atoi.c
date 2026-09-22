@@ -6,9 +6,11 @@
 /*   By: mitavare <mitavare@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 09:58:22 by mitavare          #+#    #+#             */
-/*   Updated: 2026/09/22 09:59:09 by mitavare         ###   ########.fr       */
+/*   Updated: 2026/09/22 20:59:32 by mitavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft.h"
 
 int	check(char *str)
 {

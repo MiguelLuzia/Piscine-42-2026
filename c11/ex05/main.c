@@ -6,14 +6,16 @@
 /*   By: mitavare <mitavare@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 09:52:14 by mitavare          #+#    #+#             */
-/*   Updated: 2026/09/22 10:56:32 by mitavare         ###   ########.fr       */
+/*   Updated: 2026/09/22 20:59:19 by mitavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft.h"
 
 int	main(int argc, char **argv)
 {
 	if (argc != 4)
 		return (0);
-	if (!parse_input(argv + 1))
+	if (!parse_input(argv))
 		return (0);
 }
