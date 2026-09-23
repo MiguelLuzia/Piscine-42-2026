@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normalize_input.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mitavare <mitavare@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: mdinis-d <mdinis-d@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/20 09:12:14 by mitavare          #+#    #+#             */
-/*   Updated: 2026/09/20 09:24:11 by mitavare         ###   ########.fr       */
+/*   Updated: 2026/09/20 15:01:56 by mdinis-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

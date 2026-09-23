@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_line.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mitavare <mitavare@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sdurigne <sdurigne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/20 10:05:10 by mitavare          #+#    #+#             */
-/*   Updated: 2026/09/20 11:45:24 by mitavare         ###   ########.fr       */
+/*   Updated: 2026/09/20 17:56:23 by sdurigne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,7 @@
 
 t_entry	*parse_line(char *line, int *status)
 {
-	int		i;
-	int		colon;
-	int		end_key;
-	int		value_start;
-	int		value_end;
+	int		cln_start_end[5];
 	char	*raw_key;
 	char	*key;
 	char	*value;
@@ -27,41 +23,44 @@ t_entry	*parse_line(char *line, int *status)
 	*status = 0;
 	if (is_blank(line))
 		return (NULL);
-	colon = -1;
-	i = 0;
-	while (line[i])
+	cln_start_end[1] = -1;
+	cln_start_end[0] = 0;
+	while (line[cln_start_end[0]])
 	{
-		if (line[i] == ':')
+		if (line[cln_start_end[0]] == ':')
 		{
-			colon = i;
-			break;
+			cln_start_end[1] = cln_start_end[0];
+			break ;
 		}
-		i++;
+		cln_start_end[0]++;
 	}
-	if (colon <= 0)
+	if (cln_start_end[1] <= 0)
 	{
 		*status = -1;
 		return (NULL);
 	}
-	end_key = colon;
-	while (end_key > 0 && (line[end_key - 1] == ' ' || line[end_key - 1] == '\t'))
-		end_key--;
-	if (end_key == 0)
+	cln_start_end[2] = cln_start_end[1];
+	while (cln_start_end[2] > 0
+		&& (line[cln_start_end[2] - 1] == ' '
+			|| line[cln_start_end[2] - 1] == '\t'))
+		cln_start_end[2]--;
+	if (cln_start_end[2] == 0)
 	{
 		*status = -1;
 		return (NULL);
 	}
-	i = 0;
-	while (i < end_key)
+	cln_start_end[0] = 0;
+	while (cln_start_end[0] < cln_start_end[2])
 	{
-		if (line[i] < '0' || line[i] > '9')
+		if (line[cln_start_end[0]] < '0'
+			|| line[cln_start_end[0]] > '9')
 		{
 			*status = -1;
 			return (NULL);
 		}
-		i++;
+		cln_start_end[0]++;
 	}
-	raw_key = ft_strndup_range(line, 0, end_key);
+	raw_key = ft_strndup_range(line, 0, cln_start_end[2]);
 	if (!raw_key)
 	{
 		*status = -1;
@@ -74,22 +73,23 @@ t_entry	*parse_line(char *line, int *status)
 		*status = -1;
 		return (NULL);
 	}
-	value_start = colon + 1;
-	while (line[value_start] == ' ' || line[value_start] == '\t')
-		value_start++;
-	value_end = ft_len(line);
-	while (value_end > value_start
-		&& (line[value_end - 1] == ' '
-			|| line[value_end - 1] == '\t'
-			|| line[value_end - 1] == '\r'))
-		value_end--;
-	if (value_end == value_start)
+	cln_start_end[3] = cln_start_end[1] + 1;
+	while (line[cln_start_end[3]] == ' '
+		|| line[cln_start_end[3]] == '\t')
+		cln_start_end[3]++;
+	cln_start_end[4] = ft_len(line);
+	while (cln_start_end[4] > cln_start_end[3]
+		&& (line[cln_start_end[4] - 1] == ' '
+			|| line[cln_start_end[4] - 1] == '\t'
+			|| line[cln_start_end[4] - 1] == '\r'))
+		cln_start_end[4]--;
+	if (cln_start_end[4] == cln_start_end[3])
 	{
 		free(key);
 		*status = -1;
 		return (NULL);
 	}
-	value = ft_strndup_range(line, value_start, value_end);
+	value = ft_strndup_range(line, cln_start_end[3], cln_start_end[4]);
 	if (!value)
 	{
 		free(key);
@@ -110,3 +110,5 @@ t_entry	*parse_line(char *line, int *status)
 	*status = 1;
 	return (entry);
 }
+
+// i, colon, end_key, value_start, value_end

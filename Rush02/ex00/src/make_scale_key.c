@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_scale_key.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mitavare <mitavare@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: mdinis-d <mdinis-d@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/20 11:13:08 by mitavare          #+#    #+#             */
-/*   Updated: 2026/09/20 11:16:49 by mitavare         ###   ########.fr       */
+/*   Updated: 2026/09/20 15:01:53 by mdinis-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

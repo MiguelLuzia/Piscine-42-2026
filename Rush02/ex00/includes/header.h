@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mitavare <mitavare@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sdurigne <sdurigne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/19 17:24:51 by mitavare          #+#    #+#             */
-/*   Updated: 2026/09/20 13:25:53 by mitavare         ###   ########.fr       */
+/*   Updated: 2026/09/20 18:48:19 by sdurigne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 
 typedef struct s_entry
 {
-	char	*key;
-	char	*value;
+	char			*key;
+	char			*value;
 	struct s_entry	*next;
 }	t_entry;
 
-typedef struct	s_ctx
+typedef struct s_ctx
 {
 	int	first;
 	int	check_only;
@@ -46,6 +46,6 @@ void	free_dict(t_entry *dict);
 int		print_word(t_entry *dict, char *key, t_ctx *ctx);
 int		print_under_1000(char *group, t_entry *dict, t_ctx *ctx);
 int		make_scale_key(char *dst, int size, int power);
-int	print_number(char *number, t_entry *dict, t_ctx *ctx);
+int		print_number(char *number, t_entry *dict, t_ctx *ctx);
 
 #endif

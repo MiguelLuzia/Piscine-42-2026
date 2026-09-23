@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mitavare <mitavare@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sdurigne <sdurigne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/20 09:26:10 by mitavare          #+#    #+#             */
-/*   Updated: 2026/09/20 10:45:30 by mitavare         ###   ########.fr       */
+/*   Updated: 2026/09/20 19:21:19 by sdurigne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,55 +17,54 @@ char	*read_line(int fd, int *status)
 	char	*line;
 	char	*temp;
 	char	c;
-	int		cap;
-	int		len;
-	int		n;
-	int		i;
+	int		cap_len[4];
 
 	*status = 1;
-	cap = 128;
-	len = 0;
-	line = (char *)malloc(sizeof(char) *cap);
+	cap_len[0] = 128;
+	cap_len[1] = 0;
+	line = (char *)malloc(sizeof(char) * cap_len[0]);
 	if (!line)
 	{
 		*status = -1;
 		return (NULL);
 	}
-	while ((n = read(fd, &c, 1)) == 1 && c != '\n')
+	while ((cap_len[2] = read(fd, &c, 1)) == 1 && c != '\n')
 	{
-		if (len + 1 >= cap)
+		if (cap_len[1] + 1 >= cap_len[0])
 		{
-			cap *= 2;
-			temp = (char *)malloc(sizeof(char) * cap);
+			cap_len[0] *= 2;
+			temp = (char *)malloc(sizeof(char) * cap_len[0]);
 			if (!temp)
 			{
 				free(line);
 				*status = -1;
 				return (NULL);
 			}
-			i = 0;
-			while (i < len)
+			cap_len[3] = 0;
+			while (cap_len[3] < cap_len[1])
 			{
-				temp[i] = line[i];
-				i++;
+				temp[cap_len[3]] = line[cap_len[3]];
+				cap_len[3]++;
 			}
 			free(line);
 			line = temp;
 		}
-		line[len++] = c;
+		line[cap_len[1]++] = c;
 	}
-	if (n < 0)
+	if (cap_len[2] < 0)
 	{
 		free(line);
 		*status = -1;
 		return (NULL);
 	}
-	if (n == 0 && len == 0)
+	if (cap_len[2] == 0 && cap_len[1] == 0)
 	{
 		free(line);
 		*status = 0;
 		return (NULL);
 	}
-	line[len] = '\0';
+	line[cap_len[1]] = '\0';
 	return (line);
 }
+
+// cap, len, n, i;
