@@ -6,7 +6,7 @@
 /*   By: mitavare <mitavare@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 10:43:11 by mitavare          #+#    #+#             */
-/*   Updated: 2026/09/22 21:25:06 by mitavare         ###   ########.fr       */
+/*   Updated: 2026/09/23 09:09:20 by mitavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,46 +30,37 @@ int	operation_is_valid(int b, char op)
 	return (1);
 }
 
-int operator_is_valid(char *operator)
+int	operator_is_valid(char *operator)
 {
-	char op;
+	char	op;
 
 	if (ft_strlen(operator) != 1)
+	{
+		ft_putchar('0');
+		ft_putchar('\n');
 		return (0);
-	
+	}
 	op = operator[0];
 	if (op == '+'
-			|| op == '-'
-			|| op == '*'
-			|| op == '/'
-			|| op == '%')
+		|| op == '-'
+		|| op == '*'
+		|| op == '/'
+		|| op == '%')
 		return (1);
+	ft_putchar('0');
+	ft_putchar('\n');
 	return (0);
 }
 
 int	*parse_input(char **input)
 {
-	int	i;
-	int	*values;
-	int	not_zero;
+	static int	values[2];
 
-	i = 0;
-	not_zero = 0;
-	while (input[1][i])
-	{
-		if (input[1][i] < '0' && input[1][i] > '9')
-			return (0);
-	}
-	while (input[3][i])
-	{
-		if (input[1][i] != '0')
-			not_zero = 1;
-		if (input[3][i] < '0' && input[1][i] > '9')
-			return (0);
-	}
 	values[0] = ft_atoi(input[1]);
 	values[1] = ft_atoi(input[3]);
-	if (!operator_is_valid(input[2]) || !operation_is_valid(values[1], input[2][0]));
+	if (!operator_is_valid(input[2]))
+		return (NULL);
+	if (!operation_is_valid(values[1], input[2][0]))
 		return (NULL);
 	return (values);
 }

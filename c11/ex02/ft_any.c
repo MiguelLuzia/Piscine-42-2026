@@ -6,13 +6,13 @@
 /*   By: mitavare <mitavare@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/21 12:19:31 by mitavare          #+#    #+#             */
-/*   Updated: 2026/09/22 08:54:25 by mitavare         ###   ########.fr       */
+/*   Updated: 2026/09/23 09:41:59 by mitavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	ft_any(char **tab, int(*f)(char*))
+int	ft_any(char **tab, int (*f)(char*))
 {
 	int	i;
 

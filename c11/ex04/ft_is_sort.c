@@ -6,11 +6,11 @@
 /*   By: mitavare <mitavare@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 09:03:52 by mitavare          #+#    #+#             */
-/*   Updated: 2026/09/22 09:25:22 by mitavare         ###   ########.fr       */
+/*   Updated: 2026/09/23 09:41:50 by mitavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_sort(int *tab, int length, int(*f)(int, int))
+int	ft_is_sort(int *tab, int length, int (*f)(int, int))
 {
 	int	i;
 	int	direction;

@@ -1,42 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_foreach.c                                       :+:      :+:    :+:   */
+/*   operation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitavare <mitavare@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/21 10:04:50 by mitavare          #+#    #+#             */
-/*   Updated: 2026/09/23 09:42:08 by mitavare         ###   ########.fr       */
+/*   Created: 2026/09/23 08:26:01 by mitavare          #+#    #+#             */
+/*   Updated: 2026/09/23 09:04:24 by mitavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_foreach(int *tab, int length, void (*f)(int))
-{
-	int	i;
+#include "ft.h"
 
-	i = 0;
-	while (i < length)
-	{
-		f(tab[i]);
-		i++;
-	}
+int	addition(int a, int b)
+{
+	return (a + b);
 }
 
-/*
-#include <unistd.h>
-void	put_number(int nb)
+int	subtraction(int a, int b)
 {
-	char	c;
-
-	c = nb + '0';
-	write(1, &c, 1);
+	return (a - b);
 }
 
-#include <stdio.h>
-int	main(void)
+int	multiplication(int a, int b)
 {
-	int	tab[] = {3, 4, 5, 2};
-	ft_foreach(tab, 4, put_number);
-
+	return (a * b);
 }
-*/
+
+int	division(int a, int b)
+{
+	return (a / b);
+}
+
+int	modulo(int a, int b)
+{
+	return (a % b);
+}

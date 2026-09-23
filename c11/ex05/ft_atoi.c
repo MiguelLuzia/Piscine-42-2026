@@ -6,7 +6,7 @@
 /*   By: mitavare <mitavare@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 09:58:22 by mitavare          #+#    #+#             */
-/*   Updated: 2026/09/22 20:59:32 by mitavare         ###   ########.fr       */
+/*   Updated: 2026/09/23 08:53:44 by mitavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check(char *str)
 	j = 0;
 	while (str[j] == ' ' || (9 <= str[j] && 13 >= str[j]))
 		j++;
-	if (str[j] == '-' || str[j] == '+')
+	while (str[j] == '-' || str[j] == '+')
 		j++;
 	if (str[j] <= '9' && str[j] >= '0')
 		return (1);
@@ -39,7 +39,7 @@ int	ft_atoi(char *str)
 		return (0);
 	while (str[i] == ' ' || (9 <= str[i] && 13 >= str[i]))
 		i++;
-	if (str[i] == '+' || str[i] == '-')
+	while (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
 			signal *= -1;

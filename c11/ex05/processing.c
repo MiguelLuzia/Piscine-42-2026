@@ -1,51 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_if.c                                      :+:      :+:    :+:   */
+/*   processing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitavare <mitavare@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/22 08:51:35 by mitavare          #+#    #+#             */
-/*   Updated: 2026/09/23 09:41:54 by mitavare         ###   ########.fr       */
+/*   Created: 2026/09/23 09:06:32 by mitavare          #+#    #+#             */
+/*   Updated: 2026/09/23 09:09:56 by mitavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_count_if(char **tab, int length, int (*f)(char*))
+#include "ft.h"
+
+int	operation(int a, int b, char op)
 {
-	int	i;
-	int	count;
+	int		(*operations[5])(int, int);
+	char	operators[5];
+	int		i;
 
+	operations[0] = addition;
+	operations[1] = subtraction;
+	operations[2] = multiplication;
+	operations[3] = division;
+	operations[4] = modulo;
+	operators[0] = '+';
+	operators[1] = '-';
+	operators[2] = '*';
+	operators[3] = '/';
+	operators[4] = '%';
 	i = 0;
-	count = 0;
-	while (i < length)
+	while (i < 5)
 	{
-		if (f(tab[i]) != 0)
-			count++;
-		i++;
-	}
-	return (count);
-}
-
-/*
-int	is_a(char* str)
-{
-	int	i;
-
-	i = 0;
-	while(str[i])
-	{
-		if (str[i] == 'a')
-			return (1);
+		if (op == operators[i])
+			return (operations[i](a, b));
 		i++;
 	}
 	return (0);
 }
-
-#include <stdio.h>
-int	main(void)
-{
-	char *tab[] = {"Hello", "all", "sal"};
-	int	result = ft_count_if(tab, 3, is_a);
-	printf("%d", result);
-}
-*/

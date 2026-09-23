@@ -1,42 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_foreach.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mitavare <mitavare@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/21 10:04:50 by mitavare          #+#    #+#             */
-/*   Updated: 2026/09/23 09:42:08 by mitavare         ###   ########.fr       */
+/*   Created: 2026/09/23 08:30:24 by mitavare          #+#    #+#             */
+/*   Updated: 2026/09/23 08:31:13 by mitavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_foreach(int *tab, int length, void (*f)(int))
-{
-	int	i;
+#include "ft.h"
 
-	i = 0;
-	while (i < length)
+void	ft_putnbr(int nb)
+{
+	if (nb == -2147483648)
+		write(1, "-2147483648", 11);
+	else
 	{
-		f(tab[i]);
-		i++;
+		if (nb < 0)
+		{
+			ft_putchar('-');
+			nb *= -1;
+		}
+		if (nb >= 0 && nb <= 9)
+			ft_putchar(nb + '0');
+		if (nb > 9)
+		{
+			ft_putnbr(nb / 10);
+			ft_putnbr(nb % 10);
+		}
 	}
 }
-
-/*
-#include <unistd.h>
-void	put_number(int nb)
-{
-	char	c;
-
-	c = nb + '0';
-	write(1, &c, 1);
-}
-
-#include <stdio.h>
-int	main(void)
-{
-	int	tab[] = {3, 4, 5, 2};
-	ft_foreach(tab, 4, put_number);
-
-}
-*/
