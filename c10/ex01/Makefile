@@ -1,8 +1,8 @@
-NAME = ft_display_file
+NAME = ft_cat
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-FILES = ft_display_file.c
+FILES = ft_cat.c
 OBJECTS = $(FILES:.c=.o)
 
 all: $(NAME)

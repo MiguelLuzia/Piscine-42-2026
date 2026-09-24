@@ -6,12 +6,27 @@
 /*   By: mitavare <mitavare@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 17:40:26 by mitavare          #+#    #+#             */
-/*   Updated: 2026/09/23 19:10:15 by mitavare         ###   ########.fr       */
+/*   Updated: 2026/09/24 08:15:53 by mitavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <fcntl.h>
+
+int	argc_errors(int ac)
+{
+	if (ac == 1)
+	{
+		write(1, "File name missing.\n", 19);
+		return (0);
+	}
+	if (ac > 2)
+	{
+		write(1, "Too many arguments.\n", 20);
+		return (0);
+	}
+	return (1);
+}
 
 int	main(int argc, char **argv)
 {
@@ -19,16 +34,8 @@ int	main(int argc, char **argv)
 	int		bytes_read;
 	char	buffer[1024];
 
-	if (argc == 1)
-	{
-		write(1, "File name missing.\n", 19);
+	if (!argc_errors(argc))
 		return (0);
-	}
-	if (argc > 2)
-	{
-		write(1, "Too many arguments.\n", 20);
-		return (0);
-	}
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 	{
